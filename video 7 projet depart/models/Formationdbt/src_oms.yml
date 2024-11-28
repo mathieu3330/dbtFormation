@@ -1,0 +1,11 @@
+sources:
+  - name: databaseContrat
+    database: projet-test-442516
+    schema: RdlDbt
+    tables:
+      - name: personneRawDataLayer
+        identifier: personneRDL
+      - name: adresseTelephoniqueRawDataLayer
+        identifier: adresseTelephoniqueRDL
+      - name: adresseDomicileRawDataLayer
+        identifier: adresseDomicileRDL
