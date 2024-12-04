@@ -1,0 +1,46 @@
+sources:
+  - name: databaseContrat
+    database: projet-test-442516
+    schema: RdlDbt
+    tables:
+      - name: personneRawDataLayer
+        identifier: personneRDL
+        description: '{{ doc("personne_events") }}'
+        columns:
+          - name: idPersonne
+            description: "Identifiant unique de chaque personne."
+          - name: nom
+            description: "Nom de la personne."
+          - name: prenom
+            description: "Prénom de la personne."
+          - name: idAdresseTelephonique
+            description: "Clé étrangère vers l'adresse téléphonique associée."
+          - name: idAdresseDomicile
+            description: "Clé étrangère vers l'adresse de domicile associée."
+ 
+      - name: adresseTelephoniqueRawDataLayer
+        identifier: adresseTelephoniqueRDL
+        description: "Table contenant les informations téléphoniques associées aux personnes."
+        columns:
+          - name: idAdresseTelephonique
+            description: "Identifiant unique pour chaque adresse téléphonique."
+          - name: typeTelephone
+            description: "Type de téléphone : mobile, fixe, ou fax."
+          - name: numero
+            description: "Numéro de téléphone correspondant."
+ 
+      - name: adresseDomicileRawDataLayer
+        identifier: adresseDomicileRDL
+        description: "Table contenant les adresses de domicile des personnes."
+        columns:
+          - name: idAdresse
+            description: "Identifiant unique pour chaque adresse de domicile."
+          - name: rue
+            description: "Nom de la rue de l'adresse."
+          - name: ville
+            description: "Ville où se situe l'adresse."
+          - name: codePostal
+            description: "Code postal de l'adresse."
+          - name: pays
+            description: "Pays correspondant à l'adresse."
+ 
