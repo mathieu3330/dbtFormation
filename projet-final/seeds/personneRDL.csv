@@ -1,0 +1,7 @@
+idPersonne,nom,prenom,dateNaissance,idAdresseDomicile,idAdresseTelephonique
+1,Dupont,Jean,1985-05-12,101,201
+2,Martin,Sophie,1990-03-08,102,203
+3,Durand,Luc,1983-07-25,103,204
+4,Blanc,Julie,1995-02-17,104,205
+5,mathieu,Julie,1994-02-17,104,205
+1,Dupont,mathieu,1985-05-12,101,201

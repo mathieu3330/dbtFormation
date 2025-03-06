@@ -1,0 +1,13 @@
+sources:
+  - name: databaseContrat
+    database: |
+      {%- if  target.name == "dev" -%} projet-test-442516
+      {%- elif target.name == "qa"  -%} projet-test-442516-rm
+      {%- elif target.name == "prod"  -%} projet-test-442516-prod
+      {%- else -%} invalid_database
+      {%- endif -%}
+    schema: RdlDbt
+    tables:
+          - name: contratHistorique
+            identifier: contrat
+            description: 'historique des contrat'

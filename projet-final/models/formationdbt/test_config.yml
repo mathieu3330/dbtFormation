@@ -1,0 +1,49 @@
+version: 2
+ 
+modele:
+  - name: personneRDL
+    description: "Table contenant les informations des personnes transformées dans le BDL."
+    columns:
+      - name: idPersonne
+        description: "Identifiant unique pour chaque personne."
+        data_tests:
+          - assert_unique:
+              column_name: idPersonne
+          - unique
+          - not_null
+      - name: idAdresseDomicile
+        description: "Clé étrangère vers la table adresseDomicileRDL."
+        data_tests:
+          - relationships:
+              to: ref('adresseDomicileRDL')
+              field: idAdresse
+      - name: idAdresseTelephonique
+        description: "Clé étrangère vers la table AdresseTelephonique."
+        data_tests:
+          - relationships:
+              to: ref('adresseTelephoniqueRDL')
+              field: idAdresseTelephonique
+  - name: adresseTelephoniqueRDL
+    description: "Table contenant les données brutes des adresses téléphoniques."
+    columns:
+      - name: typeTelephone
+        description: "Type de téléphone : mobile, fixe, ou fax."
+        data_tests:
+          - accepted_values:
+              values: ['mobile', 'fixe']
+  - name: adresseTelephoniqueBDL
+    description: "Table contenant les données brutes des adresses téléphoniques."
+    columns:
+      - name: typeTelephone
+        description: "Type de téléphone : mobile, fixe, ou fax."
+        data_tests:
+          - accepted_values:
+              values: ['mobile', 'fixe']
+  - name: adresseTelephoniqueRDL
+    tests:
+      - elementary.column_anomalies:
+          column_name: numero
+          anomaly_sensitivity: high   # Sensibilité élevée pour détecter plus d'anomalies
+          lookback_days: 30           # Analyse des 30 derniers jours
+          min_anomaly_probability: 0.8 # Seulement considérer une valeur anormale si probabilité > 80%
+          severity: warn              # Génère un avertissement au lieu d'un échec
